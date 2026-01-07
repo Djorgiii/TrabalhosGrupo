@@ -2,18 +2,15 @@
 title: "Audio Content Dashboard"
 format: 
   dashboard:
-    theme: dark
+    theme: cosmo
     orientation: columns
 ---
 ```{ojs}
 //| output: false
 
-// =================================================================
-// 1. ESTILO GLOBAL (CSS) & CONFIGURAÇÕES
-// =================================================================
 html`
 <style>
-  /* Variáveis de Cores */
+  /* Cores */
   :root {
     --bg-main: #000000;
     --bg-card: #121212;
@@ -24,53 +21,39 @@ html`
     --border: #333333;
   }
 
-  /* 1. FUNDO PRETO GLOBAL */
+  /* Background */
   body, .page-columns, .quarto-content, #quarto-content, .dashboard-card {
     background-color: var(--bg-main) !important;
     color: var(--text-primary) !important;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-  /* --- CORREÇÃO DOS FUNDOS BRANCOS (OJS/QUARTO) --- */
-  /* Isto remove o fundo branco dos painéis padrão do Quarto */
+  /* Romover fundo branco do ojs */
   .card, .bslib-card, .bslib-grid-item, .card-body, .html-fill-container {
     background-color: transparent !important; /* Deixa ver o preto de trás */
     border: none !important; /* Remove bordas padrão feias */
     box-shadow: none !important;
   }
   
-  /* Garante que o texto dentro dos cartões padrão seja branco */
+  /* Texto a Branco */
   .card-body {
     color: var(--text-primary) !important;
   }
 
-  /* 2. SCROLLBAR PERSONALIZADA */
+  /* ScrollBar */
   ::-webkit-scrollbar { width: 8px; }
   ::-webkit-scrollbar-track { background: var(--bg-main); }
   ::-webkit-scrollbar-thumb { background: var(--bg-hover); border-radius: 4px; }
-
-  /* 3. DROPDOWN ESCURO */
-  form select {
-    background-color: var(--bg-hover) !important;
-    color: white !important;
-    border: 1px solid var(--border) !important;
-    padding: 8px;
-    border-radius: 6px;
-    width: 100%;
-  }
   
-  /* Remove margens extras que criam espaços brancos */
   .dashboard-card {
     margin: 0 !important;
   }
 
-  /* --- 4. CORREÇÃO DA BARRA AZUL (CABEÇALHO) --- */
   .quarto-dashboard-header, .navbar {
     background-color: #333 !important; /* Força o fundo preto */
     color: white !important;
   }
   
-  /* Garante que o título "Audio Analytics..." fica branco */
   .navbar-brand, .navbar-title {
     color: white !important;
   }
@@ -81,7 +64,6 @@ html`
 
 ```{ojs}
 //| output: false
-// 1. CARREGAR DADOS LOCAIS (Sem erros de API!)
 data = FileAttachment("dados.json").json()
 ```
 
@@ -91,13 +73,10 @@ data = FileAttachment("dados.json").json()
 ```{ojs}
 // Tabela Interativa (Lista de Músicas)
 viewof selection = {
-  // 1. Criamos um contentor para a lista
-  const container = html`<div style="display: flex; flex-direction: column; gap: 8px; max-height: 900px; overflow-y: auto;"></div>`;
+  const container = html`<div style="display: flex; flex-direction: column; gap: 8px; height: 85vh; overflow-y: auto; padding-right: 5px;"></div>`;
   
-  // 2. Definimos o valor inicial (primeira música)
   container.value = data[0];
 
-  // 3. Criamos o visual de cada música
   for (const song of data) {
     const row = html`
       <div style="
@@ -119,21 +98,19 @@ viewof selection = {
       </div>
     `;
 
-    // 4. Lógica do Clique
     row.onclick = (event) => {
-      // Remove o destaque das outras linhas (opcional, visual simples)
       for (const child of container.children) child.style.background = "#2b2b2b";
       
-      // Destaca a linha clicada
       row.style.background = "#1db954"; // Verde Spotify
       
-      // Atualiza o valor para o OJS
       container.value = song;
       container.dispatchEvent(new Event("input", {bubbles: true}));
     };
 
     container.append(row);
   }
+
+  if(container.children[0]) container.children[0].style.background = "#1db954";
 
   return container;
 }
@@ -144,13 +121,11 @@ viewof selection = {
 
 ```{ojs}
 //| output: false
-// Lógica: Se não selecionares nada, mostra a primeira
 current = selection ? selection : data[0]
 ```
 
 ```{ojs}
 //| echo: false
-// Player do Spotify (Usa o ID que pusemos no JSON)
 html`<iframe 
   style="border-radius:12px" 
   src=${`https://open.spotify.com/embed/track/${current.id}?utm_source=generator`} 
@@ -161,15 +136,13 @@ html`<iframe
   loading="lazy">
 </iframe>`
 
-// 1. Função auxiliar para converter ms em mm:ss
 millisToMinutesAndSeconds = (millis) => {
   if (!millis) return "-";
-  var minutes = Math.floor(millis / 60000);
-  var seconds = ((millis % 60000) / 1000).toFixed(0);
+  const minutes = Math.floor(millis / 60000);
+  const seconds = ((millis % 60000) / 1000).toFixed(0);
   return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
 
-// 2. Função para criar os "cartões" de informação
 createTag = (label, value, icon = "") => {
   return html`
     <div style="
@@ -191,7 +164,6 @@ createTag = (label, value, icon = "") => {
 ```
 
 ```{ojs}
-// 3. Renderiza o Bloco da Ficha Técnica
 html`
 <div style="margin-top: 20px; margin-bottom: 20px;">
   <h3 style="color: white; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">
