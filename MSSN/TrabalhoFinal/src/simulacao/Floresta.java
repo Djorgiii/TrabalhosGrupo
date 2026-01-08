@@ -34,7 +34,6 @@ public class Floresta {
             for (int j = 0; j < rows; j++) {
                 nextGrid[i][j] = grid[i][j];
 
-                // 1- Arvore 2-Fogo 3-Queimado 4-Terra
                 if (grid[i][j] == 4 && p.random(1) < 0.015f) {
                     nextGrid[i][j] = 1;
                 }
