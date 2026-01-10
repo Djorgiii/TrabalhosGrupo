@@ -1,1 +1,29 @@
 ---
+title: "Hot Hits de Portugal"
+format:
+    dashboard:
+        theme: cosmo
+        logo: "data/img/logo.png"
+        orientation: columns
+---
+## Column {width="35%"}
+asjdaskfm coluna 1
+
+```{ojs}
+//| output: false
+console.log("ola")
+
+
+
+```
+
+## Column {width="65%"}
+
+### Row {height="10%"}
+dsfdsfd coluna 2 linha 1
+
+### Row {height="70%"}
+faskfdk coluna 2 linha 2
+
+### Row {height="20%"}
+asfnsjkdgfs coluna 2 linha 3
