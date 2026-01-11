@@ -1,29 +1,164 @@
 ---
-title: "Hot Hits de Portugal"
+title: "Análise de Biblioteca de Áudio"
+subtitle: "Dashboard analítico para coleção de ficheiros de áudio"
 format:
     dashboard:
         theme: cosmo
         logo: "data/img/logo.png"
         orientation: columns
 ---
-## Column {width="35%"}
-asjdaskfm coluna 1
 
 ```{ojs}
 //| output: false
-console.log("ola")
 
+// Carregar dados do ficheiro JSON
+audioData = FileAttachment("data/audio-data.json").json()
 
+// Filtros interativos
+viewof generoSelecionado = Inputs.select(
+  ["Todos", ...new Set(audioData.map(d => d.genero))],
+  {label: "Filtrar por Género:", value: "Todos"}
+)
 
+viewof artistaSelecionado = Inputs.select(
+  ["Todos", ...new Set(audioData.map(d => d.artista))],
+  {label: "Filtrar por Artista:", value: "Todos"}
+)
+
+// Dados filtrados
+dadosFiltrados = audioData.filter(d => 
+  (generoSelecionado === "Todos" || d.genero === generoSelecionado) &&
+  (artistaSelecionado === "Todos" || d.artista === artistaSelecionado)
+)
+
+// Métricas calculadas
+totalMusicas = dadosFiltrados.length
+duracaoTotal = d3.sum(dadosFiltrados, d => d.duracao)
+duracaoMedia = d3.mean(dadosFiltrados, d => d.duracao)
+popularidadeMedia = d3.mean(dadosFiltrados, d => d.popularidade)
+
+// Importar D3 e Plot
+d3 = require("d3@7")
+Plot = require("@observablehq/plot")
 ```
+
+## Column {width="35%"}
+
+### Row {height="25%"}
+
+::: {.card}
+**Filtros**
+
+```{ojs}
+viewof generoSelecionado
+viewof artistaSelecionado
+```
+:::
+
+### Row {height="75%"}
+
+::: {.card}
+**Métricas Gerais**
+
+```{ojs}
+html`
+<div style="padding: 20px;">
+  <div style="margin-bottom: 20px;">
+    <h3 style="margin: 0; color: #666;">Total de Músicas</h3>
+    <p style="font-size: 2em; margin: 10px 0; font-weight: bold;">${totalMusicas}</p>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <h3 style="margin: 0; color: #666;">Duração Total</h3>
+    <p style="font-size: 2em; margin: 10px 0; font-weight: bold;">${Math.floor(duracaoTotal / 60)} min</p>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <h3 style="margin: 0; color: #666;">Duração Média</h3>
+    <p style="font-size: 2em; margin: 10px 0; font-weight: bold;">${Math.floor(duracaoMedia)} seg</p>
+  </div>
+  <div>
+    <h3 style="margin: 0; color: #666;">Popularidade Média</h3>
+    <p style="font-size: 2em; margin: 10px 0; font-weight: bold;">${popularidadeMedia.toFixed(1)}</p>
+  </div>
+</div>
+`
+```
+:::
 
 ## Column {width="65%"}
 
-### Row {height="10%"}
-dsfdsfd coluna 2 linha 1
+### Row {height="40%"}
 
-### Row {height="70%"}
-faskfdk coluna 2 linha 2
+::: {.card}
+**Distribuição por Género**
 
-### Row {height="20%"}
-asfnsjkdgfs coluna 2 linha 3
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.barY(dadosFiltrados, 
+      Plot.groupX(
+        {y: "count"}, 
+        {x: "genero", fill: "genero", tip: true}
+      )
+    ),
+    Plot.ruleY([0])
+  ],
+  color: {scheme: "tableau10"},
+  x: {label: "Género Musical"},
+  y: {label: "Número de Músicas", grid: true},
+  marginBottom: 60
+})
+```
+:::
+
+### Row {height="30%"}
+
+::: {.card}
+**Análise de Energia vs Popularidade**
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.dot(dadosFiltrados, {
+      x: "energia",
+      y: "popularidade",
+      fill: "genero",
+      r: 6,
+      tip: true,
+      channels: {
+        Título: "titulo",
+        Artista: "artista",
+        Género: "genero"
+      }
+    })
+  ],
+  color: {scheme: "tableau10", legend: true},
+  x: {label: "Energia", domain: [0, 1]},
+  y: {label: "Popularidade", grid: true},
+  marginRight: 150
+})
+```
+:::
+
+### Row {height="30%"}
+
+::: {.card}
+**Comparação de Duração por Artista**
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.barX(dadosFiltrados, 
+      Plot.groupY(
+        {x: "mean"}, 
+        {y: "artista", x: "duracao", fill: "artista", tip: true}
+      )
+    ),
+    Plot.ruleX([0])
+  ],
+  color: {scheme: "category10"},
+  x: {label: "Duração Média (segundos)", grid: true},
+  y: {label: "Artista"},
+  marginLeft: 100
+})
+```
+:::

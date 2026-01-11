@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "titulo": "Música 1",
+    "artista": "Artista A",
+    "genero": "Pop",
+    "duracao": 245,
+    "bpm": 120,
+    "energia": 0.8,
+    "valence": 0.7,
+    "popularidade": 85
+  },
+  {
+    "id": 2,
+    "titulo": "Música 2",
+    "artista": "Artista B",
+    "genero": "Rock",
+    "duracao": 312,
+    "bpm": 140,
+    "energia": 0.9,
+    "valence": 0.6,
+    "popularidade": 72
+  },
+  {
+    "id": 3,
+    "titulo": "Música 3",
+    "artista": "Artista A",
+    "genero": "Electronic",
+    "duracao": 198,
+    "bpm": 128,
+    "energia": 0.85,
+    "valence": 0.8,
+    "popularidade": 90
+  },
+  {
+    "id": 4,
+    "titulo": "Música 4",
+    "artista": "Artista C",
+    "genero": "Pop",
+    "duracao": 267,
+    "bpm": 115,
+    "energia": 0.7,
+    "valence": 0.75,
+    "popularidade": 88
+  },
+  {
+    "id": 5,
+    "titulo": "Música 5",
+    "artista": "Artista B",
+    "genero": "Rock",
+    "duracao": 289,
+    "bpm": 135,
+    "energia": 0.95,
+    "valence": 0.5,
+    "popularidade": 76
+  }
+]
