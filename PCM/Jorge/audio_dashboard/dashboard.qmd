@@ -13,8 +13,12 @@ html`
   /* Cores */
   :root {
     --bg-main: #000000;
+    --bg-card: #2b2b2b;
     --bg-hover: #282828;
     --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+    --accent: #1db954;
+    --border: #333333;
   }
 
   /* Background */
@@ -34,7 +38,7 @@ html`
   /* ScrollBar */
   ::-webkit-scrollbar { width: 8px; }
   ::-webkit-scrollbar-track { background: var(--bg-main); }
-  ::-webkit-scrollbar-thumb { background: var(--bg-hover); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 4px; }
   
   .dashboard-card {
     margin: 0 !important;
@@ -42,7 +46,7 @@ html`
 
   .navbar {
     background-color: #333 !important; /* Força o fundo preto */
-    color: white !important;
+    color: var(--text-primary) !important;
   }
 
 </style>
@@ -70,10 +74,10 @@ viewof selection = {
         display: flex; 
         align-items: center; 
         padding: 10px; 
-        background: #2b2b2b; 
+        background: var(--bg-card); 
         border-radius: 8px; 
         cursor: pointer; 
-        color: white; 
+        color: var(--text-primary); 
         transition: background 0.2s;">
         
         <img src="${song.img}" style="width: 50px; height: 50px; border-radius: 4px; margin-right: 15px; object-fit: cover;">
@@ -86,9 +90,9 @@ viewof selection = {
     `;
 
     row.onclick = () => {
-      for (const child of container.children) child.style.background = "#2b2b2b";
+      for (const child of container.children) child.style.background = "var(--bg-card)";
       
-      row.style.background = "#1db954";
+      row.style.background = "var(--accent)";
       
       container.value = song;
       container.dispatchEvent(new Event("input", {bubbles: true}));
@@ -97,7 +101,7 @@ viewof selection = {
     container.append(row);
   }
 
-  if(container.children[0]) container.children[0].style.background = "#1db954";
+  if(container.children[0]) container.children[0].style.background = "var(--accent)";
 
   return container;
 }
@@ -132,16 +136,16 @@ millisToMinutesAndSeconds = (millis) => {
 createTag = (label, value, icon = "") => {
   return html`
     <div style="
-      background: #1a1a1a; 
+      background: var(--bg-detail); 
       padding: 8px; 
       border-radius: 6px; 
-      border: 1px solid #333; 
+      border: 1px solid var(--border); 
       display: flex; 
       flex-direction: column; 
       justify-content: center;">
       
-      <div style="font-size: 0.75rem; color: #b3b3b3; margin-bottom: 4px; text-transform: uppercase;">${label}</div>
-      <div style="font-size: 1.1rem; font-weight: 600; color: white;">
+      <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase;">${label}</div>
+      <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">
         ${icon} ${value || "-"}
       </div>
     </div>
@@ -152,7 +156,7 @@ createTag = (label, value, icon = "") => {
 ```{ojs}
 html`
 <div style="margin-top: 20px; margin-bottom: 20px;">
-  <h3 style="color: white; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+  <h3 style="color: var(--text-primary); margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
     Detalhes da Faixa
   </h3>
 
