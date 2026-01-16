@@ -45,7 +45,7 @@ html`
   }
 
   .navbar {
-    background-color: #333 !important; /* Força o fundo preto */
+    background-color: var(--border) !important; /* Força o fundo preto */
     color: var(--text-primary) !important;
   }
 
