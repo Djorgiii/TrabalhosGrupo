@@ -83,5 +83,5 @@ O ficheiro de dados deve seguir estritamente este formato (valores de exemplo):
   }
 ]
 ```
-
+As estatisticas de aúdio (BPM, Popularidade, Energia, Dançabilidade, Felicidade), foram retiradas do website [Chosic](https://www.chosic.com/).
 (Nota: O id deve ser apenas o código alfanumérico, não o link completo).
