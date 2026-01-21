@@ -7,7 +7,7 @@ async function atualizarLetras() {
         const rawData = fs.readFileSync('data.json');
         let musicas = JSON.parse(rawData);
 
-        console.log("Iniciando a busca de letras...");
+        console.log("Iniciar a procura de letras...");
 
         for (let song of musicas) {
             // Só procura se não houver letra ou se houver erro anterior

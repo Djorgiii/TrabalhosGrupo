@@ -1,77 +1,153 @@
 ---
-title: "Mapa dos Distritos — Leaflet"
-format:
-  html:
-    theme: cosmo
-    page-layout: full
-execute:
-  enabled: false
-resources:
-  - ContinenteDistritos.geojson
+title: "Legislativas 2025"
+format: 
+  dashboard:
+    orientation: columns
+    
 ---
 
-## Mapa dos Distritos de Portugal Continental
+```{ojs}
+//| label: 1-setup-completo
+//| output: false
 
-<div id="map-distritos" style="height: 550px; border:1px solid #ccc;"></div>
+d3 = require("d3@7")
+L = require("leaflet@1.9.4")
+html`<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>`
 
-```{=html}
-<!-- CSS + JS “clássico” do Leaflet (sem módulos) -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-// 1. Criar o mapa base
-const map = L.map("map-distritos").setView([39.5, -8.0], 7);
-
-// 2. Camada de tiles OpenStreetMap
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: "&copy; OpenStreetMap contributors"
-}).addTo(map);
-
-// 3. Função de estilo para os distritos
-function distritoStyle(feature) {
+partyColors = {
   return {
-    color: "#ffffff",
-    weight: 1.5,
-    fillColor: "#3b82f6",
-    fillOpacity: 0.4
+    "PS": "#e41a1c", "AD": "#ff7f00", "PPD/PSD.CDS-PP": "#ff7f00", 
+    "CH": "#1e53a1ff", "IL": "#2ebce7ff", "B.E.": "#984ea3", 
+    "L": "#4daf4a", "PCP-PEV": "#1a9850", "PAN": "#00a6a6",
+    "R.I.R.": "#f781bf", "VP": "#a6cee3", "ADN": "#fdbf6f", 
+    "E": "#ffed6f", "JPP": "#cab2d6", "MPT": "#b2df8a", 
+    "NC": "#6a3d9a", "ND": "#fb9a99", "PLS": "#ffff99", 
+    "PPM": "#1f78b4", "PCTP/MRPP": "#e31a1c", "PTP": "#a6cee3"
   };
 }
 
-// 4. Popups com o nome do distrito
-function onEachDistrito(feature, layer) {
-  const nome =
-    feature.properties.DISTRITO ||
-    feature.properties.Distrito ||
-    feature.properties.nome ||
-    "Distrito";
+getColor = function(p) { return partyColors[p] || "#999"; }
+normalize = function(t) { return t ? t.toUpperCase().trim() : ""; }
 
-  layer.bindPopup("<strong>" + nome + "</strong>");
+resultados = FileAttachment("data/resultados.json").json().catch(e => null)
+distritosGeo = FileAttachment("data/ContinenteDistritos_geo.geojson").json().catch(e => null)
+
+dadosOK = (resultados && distritosGeo && resultados.Inscritos) ? true : false
+
+distritos = dadosOK 
+  ? Object.keys(resultados.Inscritos).filter(d => d !== "Total") 
+  : ["Aguardando..."]
+
+partidos = dadosOK 
+  ? Object.keys(resultados).filter(k => !["Inscritos", "Votantes", "Brancos", "Nulos", "VVE"].includes(k)) 
+  : ["PS", "PSD"]
+
+winners = {
+  const w = {};
+  if (!dadosOK) return w;
+  
+  for (const dist of distritos) {
+    let bestP = "N/A";
+    let bestV = -1;
+    for (const p of partidos) {
+      if (resultados[p]) {
+        const val = resultados[p][dist] || 0;
+        if (val > bestV) { bestV = val; bestP = p; }
+      }
+    }
+    w[dist] = { partido: bestP, votos: bestV };
+  }
+  return w;
 }
 
-// 5. Carregar o GeoJSON dos distritos
-fetch("ContinenteDistritos.geojson")
-  .then(resp => {
-    if (!resp.ok) {
-      throw new Error("Não consegui carregar o GeoJSON.");
-    }
-    return resp.json();
-  })
-  .then(geojson => {
-    const layerDistritos = L.geoJSON(geojson, {
-      style: distritoStyle,
-      onEachFeature: onEachDistrito
-    }).addTo(map);
+winnersNorm = Object.fromEntries(Object.entries(winners).map(([d, i]) => [normalize(d), i]))
 
-    const bounds = layerDistritos.getBounds();
-    if (bounds.isValid()) map.fitBounds(bounds.pad(0.05));
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Erro a carregar 'ContinenteDistritos.geojson'.");
-  });
-</script>
+partidoMaisVotadoNacional = {
+  if (!dadosOK) return { partido: "...", votos: 0 };
+  
+  const votosNacionais = partidos.map(p => ({
+    partido: p,
+    votos: (resultados[p] || {})["Total"] || 0
+  }));
+  
+  return votosNacionais.length > 0
+    ? votosNacionais.reduce((a, b) => b.votos > a.votos ? b : a)
+    : { partido: "...", votos: 0 };
+}
+
+abstNacional = dadosOK 
+  ? (100 - (resultados.Votantes.Total / resultados.Inscritos.Total * 100)) 
+  : 0
+
+```
+
+# Mapas {height=45%}
+## Column {width=50%}
+```{ojs}
+mapaVencedor = {
+  const div = document.createElement("div");
+  div.style.height = "500px"; 
+  div.style.width = "100%";
+  div.style.zIndex = "1";
+  
+  if (!dadosOK) { 
+    div.innerHTML = "<div style='padding:20px'>⚠️ A carregar dados...</div>"; 
+    return div; 
+  }
+
+  const map = L.map(div).setView([39.6, -8], 6);
+  
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  function style(feature) {
+    const props = feature.properties;
+    const nomeRaw = props.DISTRITO || props.Distrito || props.NOME || props.name || props.NAME_1 || props.NAME_0 || "Desconhecido";
+    
+    const nome = normalize(nomeRaw);
+    const info = winnersNorm[nome];
+    
+    const corFinal = info ? getColor(info.partido) : "#ff00ff";
+
+    return { 
+      color: "#555", 
+      weight: 1, 
+      fillOpacity: 0.7, 
+      fillColor: corFinal 
+    };
+  }
+  
+  function onEachFeature(feature, layer) {
+    const props = feature.properties;
+    const nomeRaw = props.DISTRITO || props.Distrito || props.NOME || props.name || props.NAME_1 || "Desconhecido";
+    const nome = normalize(nomeRaw);
+    const info = winnersNorm[nome] || { partido: "Sem dados", votos: 0 };
+    
+    layer.bindTooltip(`
+      <div style='font-family:sans-serif'>
+        <strong>${nomeRaw}</strong><br>
+        Vencedor: ${info.partido}<br>
+        Votos: ${info.votos.toLocaleString()}
+      </div>
+    `);
+  }
+
+  if (distritosGeo && distritosGeo.features) {
+     const geoLayer = L.geoJSON(distritosGeo, { style, onEachFeature }).addTo(map);
+  }
+  
+  setTimeout(() => map.invalidateSize(), 500);
+  return div;
+}
+```
+
+```{ojs}
+Inputs.table(
+  distritos.map(d => ({
+    Distrito: d,
+    Partido: winners[d] ? winners[d].partido : "N/A",
+    Votos: winners[d] ? winners[d].votos : 0
+  })), { sort: "Votos", reverse: true }
+)
+```
