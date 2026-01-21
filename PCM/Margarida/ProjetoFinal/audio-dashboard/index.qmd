@@ -1,1 +1,163 @@
 ---
+title: "A minha playlist!"
+format: 
+  dashboard:
+    theme: cosmo
+    orientation: columns
+    logo: "data/img/logo.png"
+---
+
+```{ojs}
+//| output: false
+
+html`<link rel="stylesheet" href="assets/CSS.css">`
+```
+
+```{ojs}
+//| output: false
+data = FileAttachment("data/audio-data.json").json()
+```
+
+## Column {width="35%"}
+
+### Row {height="100%"}
+
+::: {.card}
+**Lista de Músicas**
+
+```{ojs}
+// Tabela Interativa (Lista de Músicas)
+viewof selection = {
+  const container = html`<div class="playlist-container"></div>`;
+  
+  container.value = data[0];
+
+  for (const song of data) {
+    const row = html`
+      <div style="
+        display: flex; 
+        align-items: center; 
+        padding: 10px; 
+        background: #0f2747; 
+        border-radius: 8px; 
+        cursor: pointer; 
+        color: #eef4ff; 
+        transition: background 0.2s, transform 0.1s;">
+        
+        <img src="${song.img}" style="width: 50px; height: 50px; border-radius: 4px; margin-right: 15px; object-fit: cover;">
+        
+        <div>
+          <div style="font-weight: bold; font-size: 1.1em;">${song.Música}</div>
+          <div style="opacity: 0.7; font-size: 0.9em;">${song.Artista}</div>
+        </div>
+      </div>
+    `;
+
+    row.onclick = () => {
+      for (const child of container.children) child.style.background = "#0f2747";
+      row.style.background = "#1a3664"; // Azul selecionado
+      container.value = song;
+      container.dispatchEvent(new Event("input", {bubbles: true}));
+    };
+
+    container.append(row);
+  }
+
+  if (container.children[0]) container.children[0].style.background = "#1a3664";
+
+  // Garante que o valor inicial é emitido, evitando undefined no player
+  container.dispatchEvent(new Event("input", {bubbles: true}));
+
+  return container;
+}
+```
+:::
+
+## Column {width="65%"}
+
+### Row {height="52%"}
+
+::: {.card}
+**Player**
+
+```{ojs}
+//| output: false
+current = selection ?? data?.[0] ?? {}
+playlistId = current?.id ?? ""
+```
+
+```{ojs}
+//| echo: false
+playlistId
+  ? html`<iframe 
+      style="border-radius:12px" 
+      src=${`https://open.spotify.com/embed/track/${playlistId}?utm_source=generator`} 
+      width="100%" 
+      height="100%" 
+      frameBorder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>`
+  : html`<div style="height:100%; display:flex; align-items:center; justify-content:center; color:#b3b3b3;">Seleciona uma faixa para carregar o player</div>`
+
+millisToMinutesAndSeconds = (millis) => {
+  if (!millis) return "-";
+  const minutes = Math.floor(millis / 60000);
+  const seconds = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+
+createTag = (label, value, icon = "") => {
+  return html`
+    <div style="
+      background: #0f2747; 
+      padding: 6px 8px; 
+      border-radius: 6px; 
+      border: 1px solid var(--border); 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center;">
+      
+      <div style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 3px; text-transform: uppercase;">${label}</div>
+      <div style="font-size: 1rem; font-weight: 600; color: var(--text-primary);">
+        ${icon} ${value || "-"}
+      </div>
+    </div>
+  `
+}
+```
+:::
+
+### Row {height="48%"}
+
+::: {.card style="padding-top: 5px;"}
+**Detalhes da Faixa**
+
+```{ojs}
+html`
+<div style="margin-top: 5px; margin-bottom: 10px;">
+  <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;">
+    ${createTag("Artista", current.Artista, "")}
+    ${createTag("Álbum", current.Album || "Single", "")}
+    ${createTag("Duração", millisToMinutesAndSeconds(current.Duracao),"")}
+    ${createTag("Ano", current.Year || "N/A", "")}
+    ${createTag("BPM", current.BPM, "")}
+    ${createTag("Popularidade", (current.Popularidade || 0) + "%", "")}
+    ${createTag("Energia", ((current.Energia || 0) * 100).toFixed(0) + "%", "")}
+  </div>
+  
+  <div style="
+    margin-top: 20px; 
+    padding: 15px; 
+    background: linear-gradient(135deg, #0d1f3f 0%, #18356a 100%); 
+    border-left: 4px solid var(--accent); 
+    border-radius: 8px;">
+    <div style="font-size: 0.75rem; color: var(--accent); margin-bottom: 6px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">Fun Fact</div>
+    <div style="font-size: 0.95rem; color: var(--text-primary); line-height: 1.5;">
+      ${current.funfact || "Esta música é incrível!"}
+    </div>
+  </div>
+</div>
+`
+```
+:::
