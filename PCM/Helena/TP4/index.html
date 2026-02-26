@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Mapa dos Distritos — Leaflet</title>
+<title>Legislativas 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,104 +66,343 @@ ul.task-list li input[type="checkbox"] {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-4d7f0bce1131f3e5f9547cd857cfbfc8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-890b18279d630a8af0357820e6fbb7bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-dark-890b18279d630a8af0357820e6fbb7bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-890b18279d630a8af0357820e6fbb7bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="index_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="index_files/libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="index_files/libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="index_files/libs/quarto-dashboard/components.js"></script>
+
+<script type="module" src="index_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="index_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 </head>
 
-<body class="quarto-light">
+<body class="quarto-dashboard dashboard-fill fullcontent quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
-
-<main class="content column-page" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Mapa dos Distritos — Leaflet</h1>
-</div>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
 
 
-
-<div class="quarto-title-meta column-page">
-
-    
-  
-    
-  </div>
-  
+    <div class="navbar-brand-container">
 
 
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Legislativas 2025</a></div>
+        
+        
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-mapas" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#mapas" data-scrolling="false" href="#mapas" aria-controls="mapas" aria-selected="true"><span class="nav-link-text">Mapas</span></a></li></ul></div></div>
+</nav>
 </header>
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
 
-
-<section id="mapa-dos-distritos-de-portugal-continental" class="level2">
-<h2 class="anchored" data-anchor-id="mapa-dos-distritos-de-portugal-continental">Mapa dos Distritos de Portugal Continental</h2>
-<div id="map-distritos" style="height: 550px; border:1px solid #ccc;">
+<div id="setup-completo" class="cell hidden bslib-grid-item html-fill-item">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="13" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 12;"><span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3@7"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="pp">require</span>(<span class="st">"leaflet@1.9.4"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-1">
+<div id="ojs-cell-1-1" data-nodetype="declaration">
 
 </div>
-<!-- CSS + JS “clássico” do Leaflet (sem módulos) -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-// 1. Criar o mapa base
-const map = L.map("map-distritos").setView([39.5, -8.0], 7);
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-2">
+<div id="ojs-cell-1-2" data-nodetype="declaration">
 
-// 2. Camada de tiles OpenStreetMap
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: "&copy; OpenStreetMap contributors"
-}).addTo(map);
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-3">
+<div id="ojs-cell-1-3" data-nodetype="expression">
 
-// 3. Função de estilo para os distritos
-function distritoStyle(feature) {
-  return {
-    color: "#ffffff",
-    weight: 1.5,
-    fillColor: "#3b82f6",
-    fillOpacity: 0.4
-  };
-}
+</div>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="17" data-source-offset="-144"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 16;"><span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>partyColors <span class="op">=</span> {</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PS"</span><span class="op">:</span> <span class="st">"#e41a1c"</span><span class="op">,</span> <span class="st">"AD"</span><span class="op">:</span> <span class="st">"#ff7f00"</span><span class="op">,</span> <span class="st">"PPD/PSD.CDS-PP"</span><span class="op">:</span> <span class="st">"#ff7f00"</span><span class="op">,</span> </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"CH"</span><span class="op">:</span> <span class="st">"#1e53a1ff"</span><span class="op">,</span> <span class="st">"IL"</span><span class="op">:</span> <span class="st">"#2ebce7ff"</span><span class="op">,</span> <span class="st">"B.E."</span><span class="op">:</span> <span class="st">"#984ea3"</span><span class="op">,</span> </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"L"</span><span class="op">:</span> <span class="st">"#4daf4a"</span><span class="op">,</span> <span class="st">"PCP-PEV"</span><span class="op">:</span> <span class="st">"#1a9850"</span><span class="op">,</span> <span class="st">"PAN"</span><span class="op">:</span> <span class="st">"#00a6a6"</span><span class="op">,</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"R.I.R."</span><span class="op">:</span> <span class="st">"#f781bf"</span><span class="op">,</span> <span class="st">"VP"</span><span class="op">:</span> <span class="st">"#a6cee3"</span><span class="op">,</span> <span class="st">"ADN"</span><span class="op">:</span> <span class="st">"#fdbf6f"</span><span class="op">,</span> </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E"</span><span class="op">:</span> <span class="st">"#ffed6f"</span><span class="op">,</span> <span class="st">"JPP"</span><span class="op">:</span> <span class="st">"#cab2d6"</span><span class="op">,</span> <span class="st">"MPT"</span><span class="op">:</span> <span class="st">"#b2df8a"</span><span class="op">,</span> </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NC"</span><span class="op">:</span> <span class="st">"#6a3d9a"</span><span class="op">,</span> <span class="st">"ND"</span><span class="op">:</span> <span class="st">"#fb9a99"</span><span class="op">,</span> <span class="st">"PLS"</span><span class="op">:</span> <span class="st">"#ffff99"</span><span class="op">,</span> </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PPM"</span><span class="op">:</span> <span class="st">"#1f78b4"</span><span class="op">,</span> <span class="st">"PCTP/MRPP"</span><span class="op">:</span> <span class="st">"#e31a1c"</span><span class="op">,</span> <span class="st">"PTP"</span><span class="op">:</span> <span class="st">"#a6cee3"</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>getColor <span class="op">=</span> <span class="kw">function</span>(p) { <span class="cf">return</span> partyColors[p] <span class="op">||</span> <span class="st">"#999"</span><span class="op">;</span> }</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>normalize <span class="op">=</span> <span class="kw">function</span>(t) { <span class="cf">return</span> t <span class="op">?</span> t<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">.</span><span class="fu">trim</span>() <span class="op">:</span> <span class="st">""</span><span class="op">;</span> }</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>resultados <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/resultados.json"</span>)<span class="op">.</span><span class="fu">json</span>()<span class="op">.</span><span class="fu">catch</span>(e <span class="kw">=&gt;</span> <span class="kw">null</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>distritosGeo <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/ContinenteDistritos_geo.geojson"</span>)<span class="op">.</span><span class="fu">json</span>()<span class="op">.</span><span class="fu">catch</span>(e <span class="kw">=&gt;</span> <span class="kw">null</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>dadosOK <span class="op">=</span> (resultados <span class="op">&amp;&amp;</span> distritosGeo <span class="op">&amp;&amp;</span> resultados<span class="op">.</span><span class="at">Inscritos</span>) <span class="op">?</span> <span class="kw">true</span> <span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>distritos <span class="op">=</span> dadosOK </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(resultados<span class="op">.</span><span class="at">Inscritos</span>)<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d <span class="op">!==</span> <span class="st">"Total"</span>) </span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> [<span class="st">"Aguardando..."</span>]</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>partidos <span class="op">=</span> dadosOK </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(resultados)<span class="op">.</span><span class="fu">filter</span>(k <span class="kw">=&gt;</span> <span class="op">!</span>[<span class="st">"Inscritos"</span><span class="op">,</span> <span class="st">"Votantes"</span><span class="op">,</span> <span class="st">"Brancos"</span><span class="op">,</span> <span class="st">"Nulos"</span><span class="op">,</span> <span class="st">"VVE"</span>]<span class="op">.</span><span class="fu">includes</span>(k)) </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> [<span class="st">"PS"</span><span class="op">,</span> <span class="st">"PSD"</span>]</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>winners <span class="op">=</span> {</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> w <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>dadosOK) <span class="cf">return</span> w<span class="op">;</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> dist <span class="kw">of</span> distritos) {</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bestP <span class="op">=</span> <span class="st">"N/A"</span><span class="op">;</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bestV <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> p <span class="kw">of</span> partidos) {</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (resultados[p]) {</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> val <span class="op">=</span> resultados[p][dist] <span class="op">||</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (val <span class="op">&gt;</span> bestV) { bestV <span class="op">=</span> val<span class="op">;</span> bestP <span class="op">=</span> p<span class="op">;</span> }</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    w[dist] <span class="op">=</span> { <span class="dt">partido</span><span class="op">:</span> bestP<span class="op">,</span> <span class="dt">votos</span><span class="op">:</span> bestV }<span class="op">;</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> w<span class="op">;</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>winnersNorm <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">fromEntries</span>(<span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(winners)<span class="op">.</span><span class="fu">map</span>(([d<span class="op">,</span> i]) <span class="kw">=&gt;</span> [<span class="fu">normalize</span>(d)<span class="op">,</span> i]))</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>partidoMaisVotadoNacional <span class="op">=</span> {</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>dadosOK) <span class="cf">return</span> { <span class="dt">partido</span><span class="op">:</span> <span class="st">"..."</span><span class="op">,</span> <span class="dt">votos</span><span class="op">:</span> <span class="dv">0</span> }<span class="op">;</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> votosNacionais <span class="op">=</span> partidos<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> ({</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="dt">partido</span><span class="op">:</span> p<span class="op">,</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    <span class="dt">votos</span><span class="op">:</span> (resultados[p] <span class="op">||</span> {})[<span class="st">"Total"</span>] <span class="op">||</span> <span class="dv">0</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  }))<span class="op">;</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> votosNacionais<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    <span class="op">?</span> votosNacionais<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> b<span class="op">.</span><span class="at">votos</span> <span class="op">&gt;</span> a<span class="op">.</span><span class="at">votos</span> <span class="op">?</span> b <span class="op">:</span> a)</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> { <span class="dt">partido</span><span class="op">:</span> <span class="st">"..."</span><span class="op">,</span> <span class="dt">votos</span><span class="op">:</span> <span class="dv">0</span> }<span class="op">;</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>abstNacional <span class="op">=</span> dadosOK </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> (<span class="dv">100</span> <span class="op">-</span> (resultados<span class="op">.</span><span class="at">Votantes</span><span class="op">.</span><span class="at">Total</span> <span class="op">/</span> resultados<span class="op">.</span><span class="at">Inscritos</span><span class="op">.</span><span class="at">Total</span> <span class="op">*</span> <span class="dv">100</span>)) </span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-4">
+<div id="ojs-cell-1-4" data-nodetype="declaration">
 
-// 4. Popups com o nome do distrito
-function onEachDistrito(feature, layer) {
-  const nome =
-    feature.properties.DISTRITO ||
-    feature.properties.Distrito ||
-    feature.properties.nome ||
-    "Distrito";
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-5">
+<div id="ojs-cell-1-5" data-nodetype="declaration">
 
-  layer.bindPopup("<strong>" + nome + "</strong>");
-}
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-6">
+<div id="ojs-cell-1-6" data-nodetype="declaration">
 
-// 5. Carregar o GeoJSON dos distritos
-fetch("ContinenteDistritos.geojson")
-  .then(resp => {
-    if (!resp.ok) {
-      throw new Error("Não consegui carregar o GeoJSON.");
-    }
-    return resp.json();
-  })
-  .then(geojson => {
-    const layerDistritos = L.geoJSON(geojson, {
-      style: distritoStyle,
-      onEachFeature: onEachDistrito
-    }).addTo(map);
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-7">
+<div id="ojs-cell-1-7" data-nodetype="declaration">
 
-    const bounds = layerDistritos.getBounds();
-    if (bounds.isValid()) map.fitBounds(bounds.pad(0.05));
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Erro a carregar 'ContinenteDistritos.geojson'.");
-  });
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-8">
+<div id="ojs-cell-1-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-9">
+<div id="ojs-cell-1-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-10">
+<div id="ojs-cell-1-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-11">
+<div id="ojs-cell-1-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-12">
+<div id="ojs-cell-1-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-13">
+<div id="ojs-cell-1-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-14">
+<div id="ojs-cell-1-14" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div id="setup-completo-15">
+<div id="ojs-cell-1-15" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div id="mapas" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-mapas">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 50fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb3" data-startfrom="86" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 85;"><span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>mapaVencedor <span class="op">=</span> {</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> div <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>  div<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">height</span> <span class="op">=</span> <span class="st">"500px"</span><span class="op">;</span> </span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>  div<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="st">"100%"</span><span class="op">;</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>  div<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">zIndex</span> <span class="op">=</span> <span class="st">"1"</span><span class="op">;</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>dadosOK) { </span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>    div<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">"&lt;div style='padding:20px'&gt;⚠️ A carregar dados...&lt;/div&gt;"</span><span class="op">;</span> </span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> div<span class="op">;</span> </span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> L<span class="op">.</span><span class="fu">map</span>(div)<span class="op">.</span><span class="fu">setView</span>([<span class="fl">39.6</span><span class="op">,</span> <span class="op">-</span><span class="dv">8</span>]<span class="op">,</span> <span class="dv">6</span>)<span class="op">;</span></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>  L<span class="op">.</span><span class="fu">tileLayer</span>(<span class="st">"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"</span><span class="op">,</span> {</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>      <span class="dt">attribution</span><span class="op">:</span> <span class="st">'&amp;copy; OpenStreetMap'</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>  })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">style</span>(feature) {</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> props <span class="op">=</span> feature<span class="op">.</span><span class="at">properties</span><span class="op">;</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> nomeRaw <span class="op">=</span> props<span class="op">.</span><span class="at">DISTRITO</span> <span class="op">||</span> props<span class="op">.</span><span class="at">Distrito</span> <span class="op">||</span> props<span class="op">.</span><span class="at">NOME</span> <span class="op">||</span> props<span class="op">.</span><span class="at">name</span> <span class="op">||</span> props<span class="op">.</span><span class="at">NAME_1</span> <span class="op">||</span> props<span class="op">.</span><span class="at">NAME_0</span> <span class="op">||</span> <span class="st">"Desconhecido"</span><span class="op">;</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> nome <span class="op">=</span> <span class="fu">normalize</span>(nomeRaw)<span class="op">;</span></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> info <span class="op">=</span> winnersNorm[nome]<span class="op">;</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> corFinal <span class="op">=</span> info <span class="op">?</span> <span class="fu">getColor</span>(info<span class="op">.</span><span class="at">partido</span>) <span class="op">:</span> <span class="st">"#ff00ff"</span><span class="op">;</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { </span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>      <span class="dt">color</span><span class="op">:</span> <span class="st">"#555"</span><span class="op">,</span> </span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>      <span class="dt">weight</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> </span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.7</span><span class="op">,</span> </span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillColor</span><span class="op">:</span> corFinal </span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">onEachFeature</span>(feature<span class="op">,</span> layer) {</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> props <span class="op">=</span> feature<span class="op">.</span><span class="at">properties</span><span class="op">;</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> nomeRaw <span class="op">=</span> props<span class="op">.</span><span class="at">DISTRITO</span> <span class="op">||</span> props<span class="op">.</span><span class="at">Distrito</span> <span class="op">||</span> props<span class="op">.</span><span class="at">NOME</span> <span class="op">||</span> props<span class="op">.</span><span class="at">name</span> <span class="op">||</span> props<span class="op">.</span><span class="at">NAME_1</span> <span class="op">||</span> <span class="st">"Desconhecido"</span><span class="op">;</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> nome <span class="op">=</span> <span class="fu">normalize</span>(nomeRaw)<span class="op">;</span></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> info <span class="op">=</span> winnersNorm[nome] <span class="op">||</span> { <span class="dt">partido</span><span class="op">:</span> <span class="st">"Sem dados"</span><span class="op">,</span> <span class="dt">votos</span><span class="op">:</span> <span class="dv">0</span> }<span class="op">;</span></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>    layer<span class="op">.</span><span class="fu">bindTooltip</span>(<span class="vs">`</span></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style='font-family:sans-serif'&gt;</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;strong&gt;</span><span class="sc">${</span>nomeRaw<span class="sc">}</span><span class="vs">&lt;/strong&gt;&lt;br&gt;</span></span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="vs">        Vencedor: </span><span class="sc">${</span>info<span class="op">.</span><span class="at">partido</span><span class="sc">}</span><span class="vs">&lt;br&gt;</span></span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="vs">        Votos: </span><span class="sc">${</span>info<span class="op">.</span><span class="at">votos</span><span class="op">.</span><span class="fu">toLocaleString</span>()<span class="sc">}</span></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="vs">    `</span>)<span class="op">;</span></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (distritosGeo <span class="op">&amp;&amp;</span> distritosGeo<span class="op">.</span><span class="at">features</span>) {</span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>     <span class="kw">const</span> geoLayer <span class="op">=</span> L<span class="op">.</span><span class="fu">geoJSON</span>(distritosGeo<span class="op">,</span> { style<span class="op">,</span> onEachFeature })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>  <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> map<span class="op">.</span><span class="fu">invalidateSize</span>()<span class="op">,</span> <span class="dv">500</span>)<span class="op">;</span></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> div<span class="op">;</span></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div id="ojs-cell-2" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb4" data-startfrom="145" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 144;"><span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(</span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>  distritos<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Distrito</span><span class="op">:</span> d<span class="op">,</span></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Partido</span><span class="op">:</span> winners[d] <span class="op">?</span> winners[d]<span class="op">.</span><span class="at">partido</span> <span class="op">:</span> <span class="st">"N/A"</span><span class="op">,</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Votos</span><span class="op">:</span> winners[d] <span class="op">?</span> winners[d]<span class="op">.</span><span class="at">votos</span> <span class="op">:</span> <span class="dv">0</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>  }))<span class="op">,</span> { <span class="dt">sort</span><span class="op">:</span> <span class="st">"Votos"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }</span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div id="ojs-cell-3" data-nodetype="expression" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5kMyA9IHJlcXVpcmUoXCJkM0A3XCIpXHJcbkwgPSByZXF1aXJlKFwibGVhZmxldEAxLjkuNFwiKVxyXG5odG1sYDxsaW5rIHJlbD1cInN0eWxlc2hlZXRcIiBocmVmPVwiaHR0cHM6Ly91bnBrZy5jb20vbGVhZmxldEAxLjkuNC9kaXN0L2xlYWZsZXQuY3NzXCIvPmBcclxuXHJcbnBhcnR5Q29sb3JzID0ge1xyXG4gIHJldHVybiB7XHJcbiAgICBcIlBTXCI6IFwiI2U0MWExY1wiLCBcIkFEXCI6IFwiI2ZmN2YwMFwiLCBcIlBQRC9QU0QuQ0RTLVBQXCI6IFwiI2ZmN2YwMFwiLCBcclxuICAgIFwiQ0hcIjogXCIjMWU1M2ExZmZcIiwgXCJJTFwiOiBcIiMyZWJjZTdmZlwiLCBcIkIuRS5cIjogXCIjOTg0ZWEzXCIsIFxyXG4gICAgXCJMXCI6IFwiIzRkYWY0YVwiLCBcIlBDUC1QRVZcIjogXCIjMWE5ODUwXCIsIFwiUEFOXCI6IFwiIzAwYTZhNlwiLFxyXG4gICAgXCJSLkkuUi5cIjogXCIjZjc4MWJmXCIsIFwiVlBcIjogXCIjYTZjZWUzXCIsIFwiQUROXCI6IFwiI2ZkYmY2ZlwiLCBcclxuICAgIFwiRVwiOiBcIiNmZmVkNmZcIiwgXCJKUFBcIjogXCIjY2FiMmQ2XCIsIFwiTVBUXCI6IFwiI2IyZGY4YVwiLCBcclxuICAgIFwiTkNcIjogXCIjNmEzZDlhXCIsIFwiTkRcIjogXCIjZmI5YTk5XCIsIFwiUExTXCI6IFwiI2ZmZmY5OVwiLCBcclxuICAgIFwiUFBNXCI6IFwiIzFmNzhiNFwiLCBcIlBDVFAvTVJQUFwiOiBcIiNlMzFhMWNcIiwgXCJQVFBcIjogXCIjYTZjZWUzXCJcclxuICB9O1xyXG59XHJcblxyXG5nZXRDb2xvciA9IGZ1bmN0aW9uKHApIHsgcmV0dXJuIHBhcnR5Q29sb3JzW3BdIHx8IFwiIzk5OVwiOyB9XHJcbm5vcm1hbGl6ZSA9IGZ1bmN0aW9uKHQpIHsgcmV0dXJuIHQgPyB0LnRvVXBwZXJDYXNlKCkudHJpbSgpIDogXCJcIjsgfVxyXG5cclxucmVzdWx0YWRvcyA9IEZpbGVBdHRhY2htZW50KFwiZGF0YS9yZXN1bHRhZG9zLmpzb25cIikuanNvbigpLmNhdGNoKGUgPT4gbnVsbClcclxuZGlzdHJpdG9zR2VvID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRhL0NvbnRpbmVudGVEaXN0cml0b3NfZ2VvLmdlb2pzb25cIikuanNvbigpLmNhdGNoKGUgPT4gbnVsbClcclxuXHJcbmRhZG9zT0sgPSAocmVzdWx0YWRvcyAmJiBkaXN0cml0b3NHZW8gJiYgcmVzdWx0YWRvcy5JbnNjcml0b3MpID8gdHJ1ZSA6IGZhbHNlXHJcblxyXG5kaXN0cml0b3MgPSBkYWRvc09LIFxyXG4gID8gT2JqZWN0LmtleXMocmVzdWx0YWRvcy5JbnNjcml0b3MpLmZpbHRlcihkID0+IGQgIT09IFwiVG90YWxcIikgXHJcbiAgOiBbXCJBZ3VhcmRhbmRvLi4uXCJdXHJcblxyXG5wYXJ0aWRvcyA9IGRhZG9zT0sgXHJcbiAgPyBPYmplY3Qua2V5cyhyZXN1bHRhZG9zKS5maWx0ZXIoayA9PiAhW1wiSW5zY3JpdG9zXCIsIFwiVm90YW50ZXNcIiwgXCJCcmFuY29zXCIsIFwiTnVsb3NcIiwgXCJWVkVcIl0uaW5jbHVkZXMoaykpIFxyXG4gIDogW1wiUFNcIiwgXCJQU0RcIl1cclxuXHJcbndpbm5lcnMgPSB7XHJcbiAgY29uc3QgdyA9IHt9O1xyXG4gIGlmICghZGFkb3NPSykgcmV0dXJuIHc7XHJcbiAgXHJcbiAgZm9yIChjb25zdCBkaXN0IG9mIGRpc3RyaXRvcykge1xyXG4gICAgbGV0IGJlc3RQID0gXCJOL0FcIjtcclxuICAgIGxldCBiZXN0ViA9IC0xO1xyXG4gICAgZm9yIChjb25zdCBwIG9mIHBhcnRpZG9zKSB7XHJcbiAgICAgIGlmIChyZXN1bHRhZG9zW3BdKSB7XHJcbiAgICAgICAgY29uc3QgdmFsID0gcmVzdWx0YWRvc1twXVtkaXN0XSB8fCAwO1xyXG4gICAgICAgIGlmICh2YWwgPiBiZXN0VikgeyBiZXN0ViA9IHZhbDsgYmVzdFAgPSBwOyB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICAgIHdbZGlzdF0gPSB7IHBhcnRpZG86IGJlc3RQLCB2b3RvczogYmVzdFYgfTtcclxuICB9XHJcbiAgcmV0dXJuIHc7XHJcbn1cclxuXHJcbndpbm5lcnNOb3JtID0gT2JqZWN0LmZyb21FbnRyaWVzKE9iamVjdC5lbnRyaWVzKHdpbm5lcnMpLm1hcCgoW2QsIGldKSA9PiBbbm9ybWFsaXplKGQpLCBpXSkpXHJcblxyXG5wYXJ0aWRvTWFpc1ZvdGFkb05hY2lvbmFsID0ge1xyXG4gIGlmICghZGFkb3NPSykgcmV0dXJuIHsgcGFydGlkbzogXCIuLi5cIiwgdm90b3M6IDAgfTtcclxuICBcclxuICBjb25zdCB2b3Rvc05hY2lvbmFpcyA9IHBhcnRpZG9zLm1hcChwID0+ICh7XHJcbiAgICBwYXJ0aWRvOiBwLFxyXG4gICAgdm90b3M6IChyZXN1bHRhZG9zW3BdIHx8IHt9KVtcIlRvdGFsXCJdIHx8IDBcclxuICB9KSk7XHJcbiAgXHJcbiAgcmV0dXJuIHZvdG9zTmFjaW9uYWlzLmxlbmd0aCA+IDBcclxuICAgID8gdm90b3NOYWNpb25haXMucmVkdWNlKChhLCBiKSA9PiBiLnZvdG9zID4gYS52b3RvcyA/IGIgOiBhKVxyXG4gICAgOiB7IHBhcnRpZG86IFwiLi4uXCIsIHZvdG9zOiAwIH07XHJcbn1cclxuXHJcbmFic3ROYWNpb25hbCA9IGRhZG9zT0sgXHJcbiAgPyAoMTAwIC0gKHJlc3VsdGFkb3MuVm90YW50ZXMuVG90YWwgLyByZXN1bHRhZG9zLkluc2NyaXRvcy5Ub3RhbCAqIDEwMCkpIFxyXG4gIDogMFxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibWFwYVZlbmNlZG9yID0ge1xyXG4gIGNvbnN0IGRpdiA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XHJcbiAgZGl2LnN0eWxlLmhlaWdodCA9IFwiNTAwcHhcIjsgXHJcbiAgZGl2LnN0eWxlLndpZHRoID0gXCIxMDAlXCI7XHJcbiAgZGl2LnN0eWxlLnpJbmRleCA9IFwiMVwiO1xyXG4gIFxyXG4gIGlmICghZGFkb3NPSykgeyBcclxuICAgIGRpdi5pbm5lckhUTUwgPSBcIjxkaXYgc3R5bGU9J3BhZGRpbmc6MjBweCc+4pqg77iPIEEgY2FycmVnYXIgZGFkb3MuLi48L2Rpdj5cIjsgXHJcbiAgICByZXR1cm4gZGl2OyBcclxuICB9XHJcblxyXG4gIGNvbnN0IG1hcCA9IEwubWFwKGRpdikuc2V0VmlldyhbMzkuNiwgLThdLCA2KTtcclxuICBcclxuICBMLnRpbGVMYXllcihcImh0dHBzOi8ve3N9LnRpbGUub3BlbnN0cmVldG1hcC5vcmcve3p9L3t4fS97eX0ucG5nXCIsIHtcclxuICAgICAgYXR0cmlidXRpb246ICcmY29weTsgT3BlblN0cmVldE1hcCdcclxuICB9KS5hZGRUbyhtYXApO1xyXG5cclxuICBmdW5jdGlvbiBzdHlsZShmZWF0dXJlKSB7XHJcbiAgICBjb25zdCBwcm9wcyA9IGZlYXR1cmUucHJvcGVydGllcztcclxuICAgIGNvbnN0IG5vbWVSYXcgPSBwcm9wcy5ESVNUUklUTyB8fCBwcm9wcy5EaXN0cml0byB8fCBwcm9wcy5OT01FIHx8IHByb3BzLm5hbWUgfHwgcHJvcHMuTkFNRV8xIHx8IHByb3BzLk5BTUVfMCB8fCBcIkRlc2NvbmhlY2lkb1wiO1xyXG4gICAgXHJcbiAgICBjb25zdCBub21lID0gbm9ybWFsaXplKG5vbWVSYXcpO1xyXG4gICAgY29uc3QgaW5mbyA9IHdpbm5lcnNOb3JtW25vbWVdO1xyXG4gICAgXHJcbiAgICBjb25zdCBjb3JGaW5hbCA9IGluZm8gPyBnZXRDb2xvcihpbmZvLnBhcnRpZG8pIDogXCIjZmYwMGZmXCI7XHJcblxyXG4gICAgcmV0dXJuIHsgXHJcbiAgICAgIGNvbG9yOiBcIiM1NTVcIiwgXHJcbiAgICAgIHdlaWdodDogMSwgXHJcbiAgICAgIGZpbGxPcGFjaXR5OiAwLjcsIFxyXG4gICAgICBmaWxsQ29sb3I6IGNvckZpbmFsIFxyXG4gICAgfTtcclxuICB9XHJcbiAgXHJcbiAgZnVuY3Rpb24gb25FYWNoRmVhdHVyZShmZWF0dXJlLCBsYXllcikge1xyXG4gICAgY29uc3QgcHJvcHMgPSBmZWF0dXJlLnByb3BlcnRpZXM7XHJcbiAgICBjb25zdCBub21lUmF3ID0gcHJvcHMuRElTVFJJVE8gfHwgcHJvcHMuRGlzdHJpdG8gfHwgcHJvcHMuTk9NRSB8fCBwcm9wcy5uYW1lIHx8IHByb3BzLk5BTUVfMSB8fCBcIkRlc2NvbmhlY2lkb1wiO1xyXG4gICAgY29uc3Qgbm9tZSA9IG5vcm1hbGl6ZShub21lUmF3KTtcclxuICAgIGNvbnN0IGluZm8gPSB3aW5uZXJzTm9ybVtub21lXSB8fCB7IHBhcnRpZG86IFwiU2VtIGRhZG9zXCIsIHZvdG9zOiAwIH07XHJcbiAgICBcclxuICAgIGxheWVyLmJpbmRUb29sdGlwKGBcclxuICAgICAgPGRpdiBzdHlsZT0nZm9udC1mYW1pbHk6c2Fucy1zZXJpZic+XHJcbiAgICAgICAgPHN0cm9uZz4ke25vbWVSYXd9PC9zdHJvbmc+PGJyPlxyXG4gICAgICAgIFZlbmNlZG9yOiAke2luZm8ucGFydGlkb308YnI+XHJcbiAgICAgICAgVm90b3M6ICR7aW5mby52b3Rvcy50b0xvY2FsZVN0cmluZygpfVxyXG4gICAgICA8L2Rpdj5cclxuICAgIGApO1xyXG4gIH1cclxuXHJcbiAgaWYgKGRpc3RyaXRvc0dlbyAmJiBkaXN0cml0b3NHZW8uZmVhdHVyZXMpIHtcclxuICAgICBjb25zdCBnZW9MYXllciA9IEwuZ2VvSlNPTihkaXN0cml0b3NHZW8sIHsgc3R5bGUsIG9uRWFjaEZlYXR1cmUgfSkuYWRkVG8obWFwKTtcclxuICB9XHJcbiAgXHJcbiAgc2V0VGltZW91dCgoKSA9PiBtYXAuaW52YWxpZGF0ZVNpemUoKSwgNTAwKTtcclxuICByZXR1cm4gZGl2O1xyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IklucHV0cy50YWJsZShcclxuICBkaXN0cml0b3MubWFwKGQgPT4gKHtcclxuICAgIERpc3RyaXRvOiBkLFxyXG4gICAgUGFydGlkbzogd2lubmVyc1tkXSA/IHdpbm5lcnNbZF0ucGFydGlkbyA6IFwiTi9BXCIsXHJcbiAgICBWb3Rvczogd2lubmVyc1tkXSA/IHdpbm5lcnNbZF0udm90b3MgOiAwXHJcbiAgfSkpLCB7IHNvcnQ6IFwiVm90b3NcIiwgcmV2ZXJzZTogdHJ1ZSB9XHJcbilcclxuIn1dfQ==
 </script>
-</section>
-
-</main>
-<!-- /main column -->
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -529,8 +803,16 @@ fetch("ContinenteDistritos.geojson")
     }
   });
   </script>
-</div> <!-- /content -->
+</div> <!-- /container fluid -->
 
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
 
 
 
