@@ -82,7 +82,7 @@
                 <classesStart>2027-02-01</classesStart>
                 <classesEnd>2027-05-21</classesEnd>
                 <examPeriodStart>2027-06-01</examPeriodStart>
-                <examPeriodEnd>2027-06-18</examPeriodEnd>
+                <examPeriodEnd>2027-06-18</examPeriodEnd> 
             </semestre>
             <semestre id="2027-S2" name="2º Semestre">
                 <start>2027-09-06</start>
