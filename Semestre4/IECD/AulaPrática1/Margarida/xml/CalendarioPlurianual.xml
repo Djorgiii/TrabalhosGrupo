@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calendarioPlurianual xmlns="http://isel.pt/calendario" generated="2026-03-05">
+    <!-- Academic calendar for ISEL, years 2025-2027. Dates use ISO 8601 (YYYY-MM-DD). -->
+
+    <!-- Year 2025 -->
+    <ano value="2025">
+        <semestres>
+            <semestre id="2025-S1" name="1º Semestre">
+                <start>2025-02-03</start>
+                <end>2025-06-20</end>
+                <classesStart>2025-02-03</classesStart>
+                <classesEnd>2025-05-23</classesEnd>
+                <examPeriodStart>2025-06-02</examPeriodStart>
+                <examPeriodEnd>2025-06-20</examPeriodEnd>
+            </semestre>
+            <semestre id="2025-S2" name="2º Semestre">
+                <start>2025-09-08</start>
+                <end>2026-01-23</end>
+                <classesStart>2025-09-08</classesStart>
+                <classesEnd>2025-12-19</classesEnd>
+                <examPeriodStart>2026-01-12</examPeriodStart>
+                <examPeriodEnd>2026-01-23</examPeriodEnd>
+            </semestre>
+        </semestres>
+
+        <holidays>
+            <holiday id="2025-natal" name="Natal / Ano Novo" start="2025-12-22" end="2026-01-02"/>
+            <holiday id="2025-carnaval" name="Carnaval" start="2025-03-03" end="2025-03-04"/>
+            <holiday id="2025-pascoa" name="Páscoa" start="2025-04-18" end="2025-04-21"/>
+            <holiday id="2025-dia-liberdade" name="Dia da Liberdade" start="2025-04-25" end="2025-04-25"/>
+            <holiday id="2025-feriado-nacional" name="Feriados Nacionais - seleção" start="2025-05-01" end="2025-05-01"/>
+        </holidays>
+
+        <events>
+            <event id="2025-orientacao" name="Semana de Orientação" date="2025-02-01"/>
+            <event id="2025-exame-recurso" name="Época de Recurso" start="2025-08-18" end="2025-08-29"/>
+            <event id="2025-fim-ano-academico" name="Cerimónia de Encerramento" date="2025-06-28"/>
+        </events>
+    </ano>
+
+    <!-- Year 2026 -->
+    <ano value="2026">
+        <semestres>
+            <semestre id="2026-S1" name="1º Semestre">
+                <start>2026-02-02</start>
+                <end>2026-06-19</end>
+                <classesStart>2026-02-02</classesStart>
+                <classesEnd>2026-05-22</classesEnd>
+                <examPeriodStart>2026-06-01</examPeriodStart>
+                <examPeriodEnd>2026-06-19</examPeriodEnd>
+            </semestre>
+            <semestre id="2026-S2" name="2º Semestre">
+                <start>2026-09-07</start>
+                <end>2027-01-22</end>
+                <classesStart>2026-09-07</classesStart>
+                <classesEnd>2026-12-18</classesEnd>
+                <examPeriodStart>2027-01-11</examPeriodStart>
+                <examPeriodEnd>2027-01-22</examPeriodEnd>
+            </semestre>
+        </semestres>
+
+        <holidays>
+            <holiday id="2026-natal" name="Natal / Ano Novo" start="2026-12-23" end="2027-01-03"/>
+            <holiday id="2026-carnaval" name="Carnaval" start="2026-02-16" end="2026-02-17"/>
+            <holiday id="2026-pascoa" name="Páscoa" start="2026-04-03" end="2026-04-06"/>
+            <holiday id="2026-dia-liberdade" name="Dia da Liberdade" start="2026-04-25" end="2026-04-25"/>
+        </holidays>
+
+        <events>
+            <event id="2026-orientacao" name="Semana de Orientação" date="2026-02-02"/>
+            <event id="2026-fim-ano-academico" name="Cerimónia de Encerramento" date="2026-06-26"/>
+            <event id="2026-verao-academico" name="Época de Avaliação - Verão" start="2026-07-06" end="2026-07-17"/>
+        </events>
+    </ano>
+
+    <!-- Year 2027 -->
+    <ano value="2027">
+        <semestres>
+            <semestre id="2027-S1" name="1º Semestre">
+                <start>2027-02-01</start>
+                <end>2027-06-18</end>
+                <classesStart>2027-02-01</classesStart>
+                <classesEnd>2027-05-21</classesEnd>
+                <examPeriodStart>2027-06-01</examPeriodStart>
+                <examPeriodEnd>2027-06-18</examPeriodEnd>
+            </semestre>
+            <semestre id="2027-S2" name="2º Semestre">
+                <start>2027-09-06</start>
+                <end>2028-01-21</end>
+                <classesStart>2027-09-06</classesStart>
+                <classesEnd>2027-12-17</classesEnd>
+                <examPeriodStart>2028-01-10</examPeriodStart>
+                <examPeriodEnd>2028-01-21</examPeriodEnd>
+            </semestre>
+        </semestres>
+
+        <holidays>
+            <holiday id="2027-natal" name="Natal / Ano Novo" start="2027-12-22" end="2028-01-02"/>
+            <holiday id="2027-carnaval" name="Carnaval" start="2027-02-28" end="2027-03-01"/>
+            <holiday id="2027-pascoa" name="Páscoa" start="2027-04-16" end="2027-04-19"/>
+            <holiday id="2027-dia-liberdade" name="Dia da Liberdade" start="2027-04-25" end="2027-04-25"/>
+        </holidays>
+
+        <events>
+            <event id="2027-orientacao" name="Semana de Orientação" date="2027-01-30"/>
+            <event id="2027-fim-ano-academico" name="Cerimónia de Encerramento" date="2027-06-25"/>
+            <event id="2027-verao-academico" name="Época de Avaliação - Verão" start="2027-07-05" end="2027-07-16"/>
+        </events>
+    </ano>
+
+</calendarioPlurianual>
