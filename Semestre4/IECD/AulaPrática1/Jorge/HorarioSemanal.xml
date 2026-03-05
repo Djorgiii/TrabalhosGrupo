@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agenda>
+    <semana inicio="2026-03-02" fim="2026-03-06">
+        
+        <turma nome="LEIM41D">
+            <dia nome="Segunda-feira">
+                <aula>
+                    <uc>IASA</uc>
+                    <inicio>14:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.13</sala>
+                    <professor>Luís Filipe Morgado</professor>
+                </aula>
+            </dia>
+            <dia nome="Terça-feira">
+                <aula>
+                    <uc>AAV</uc>
+                    <inicio>14:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.19</sala>
+                    <professor>Hugo Tito Cordeiro</professor>
+                </aula>
+            </dia>
+            <dia nome="Quarta-feira">
+                <aula>
+                    <uc>IECD</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>F.-1.11</sala>
+                    <professor>Porfirio Pena Filipe</professor>
+                </aula>
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.2.06</sala>
+                    <professor>Gonçalo Valadão Matias</professor>
+                </aula>
+            </dia>
+            <dia nome="Quinta-feira">
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>C.1.01</sala>
+                    <professor>Gonçalo Valadão Matias</professor>
+                </aula>
+                <aula>
+                    <uc>RCP</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>F.-1.09</sala>
+                    <professor>Diego Gimenez Passos</professor>
+                </aula>
+            </dia>
+            <dia nome="Sexta-feira">
+                <aula>
+                    <uc>RCP</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>E.1.32</sala>
+                    <professor>Diego Gimenez Passos</professor>
+                </aula>
+                <aula>
+                    <uc>IECD</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.2.06</sala>
+                    <professor>Porfirio Pena Filipe</professor>
+                </aula>
+            </dia>
+        </turma>
+
+        <turma nome="LEIM42D">
+            <dia nome="Segunda-feira">
+                <aula>
+                    <uc>AAV</uc>
+                    <inicio>14:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.19</sala>
+                    <professor>Hugo Tito Cordeiro</professor>
+                </aula>
+            </dia>
+            <dia nome="Terça-feira">
+                <aula>
+                    <uc>IASA</uc>
+                    <inicio>14:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.20</sala>
+                    <professor>Luís Filipe Morgado</professor>
+                </aula>
+            </dia>
+            <dia nome="Quarta-feira">
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>C.1.02</sala>
+                    <professor>Gonçalo Valadão Matias</professor>
+                </aula>
+                <aula>
+                    <uc>RCP</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.-1.09</sala>
+                    <professor>Diego Gimenez Passos</professor>
+                </aula>
+            </dia>
+            <dia nome="Quinta-feira">
+                <aula>
+                    <uc>IECD</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>F.-1-09</sala>
+                    <professor>Cédric Bernard Grueau</professor>
+                </aula>
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.1.01</sala>
+                    <professor>Gonçalo Valadão Matias</professor>
+                </aula>
+            </dia>
+            <dia nome="Sexta-feira">
+            	<aula>
+            		<uc>RCP</uc>
+            		<inicio>14:00</inicio>
+            		<fim>17:00</fim>
+            		<sala>E.1.32</sala>
+            		<professor>Diego Gimenez Passos</professor>
+            	</aula>
+            	<aula>
+            		<uc>IECD</uc>
+            		<inicio>17:00</inicio>
+            		<fim>18:30</fim>
+            		<sala>G.2.07</sala>
+            		<professor>Cédric Bernard Grueau</professor>
+			    </aula>
+	     	</dia>
+	    </turma>
+	     	
+        <turma nome="LEIM43D">
+            <dia nome="Segunda-feira">
+                <aula>
+                    <uc>AAV</uc>
+                    <inicio>09:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.19</sala>
+                    <professor>Hugo Tito Cordeiro</professor>
+                </aula>
+            </dia>
+            <dia nome="Terça-feira">
+                <aula>
+                    <uc>RCP</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>E.1.33</sala>
+                    <professor>Nuno Miguel Garcia</professor>
+                </aula>
+                <aula>
+                	<uc>RCP</uc>
+                	<inicio>17:00</inicio>
+                	<fim>18:30</fim>
+                	<sala>G.2.08</sala>
+                	<professor>Nuno Miguel Garcia</professor>
+                </aula>
+            </dia>
+            <dia nome="Quarta-feira">
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>G.0.19</sala>
+                    <professor>Gonçalo Caetano Marques</professor>
+                </aula>
+                <aula>
+                    <uc>IECD</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.2.08</sala>
+                    <professor>Porfirio Pena Filipe</professor>
+                </aula>
+            </dia>
+            <dia nome="Quinta-feira">
+                <aula>
+                    <uc>IASA</uc>
+                    <inicio>14:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.18</sala>
+                    <professor>Stefano Frizzo Stefenon</professor>
+                </aula>
+            </dia>
+            <dia nome="Sexta-feira">
+                <aula>
+                    <uc>IECD</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>F.-1.11</sala>
+                    <professor>Porfirio Pena Filipe</professor>
+                </aula>
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.2.08</sala>
+                    <professor>Gonçalo Caetano Marques</professor>
+                </aula>
+            </dia>
+        </turma>
+
+        <turma nome="LEIM44D">
+            <dia nome="Segunda-feira">
+                <aula>
+                    <uc>IASA</uc>
+                    <inicio>14:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.18</sala>
+                    <professor>Stefano Frizzo Stefenon</professor>
+                </aula>
+            </dia>
+            <dia nome="Terça-feira">
+                <aula>
+                    <uc>RCP</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>E.1.33</sala>
+                    <professor>Nuno Miguel Garcia</professor>
+                </aula>
+                <aula>
+                	<uc>IECD</uc>
+                	<inicio>17:00</inicio>
+                	<fim>18:30</fim>
+                	<sala>G.2.07</sala>
+                	<professor>Cédric Bernard Grueau</professor>
+                </aula>
+            </dia>
+            <dia nome="Quarta-feira">
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>G.0.13</sala>
+                    <professor>André Ribeiro Lourenço</professor>
+                </aula>
+                <aula>
+                    <uc>RCP</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.2.07</sala>
+                    <professor>Nuno Miguel Garcia</professor>
+                </aula>
+            </dia>
+            <dia nome="Quinta-feira">
+                <aula>
+                    <uc>AAV</uc>
+                    <inicio>14:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>G.0.19</sala>
+                    <professor>Letícia Inês Lucas</professor>
+                </aula>
+            </dia>
+            <dia nome="Sexta-feira">
+                <aula>
+                    <uc>IECD</uc>
+                    <inicio>14:00</inicio>
+                    <fim>17:00</fim>
+                    <sala>F.-1.09</sala>
+                    <professor>Cédric Bernard Grueau</professor>
+                </aula>
+                <aula>
+                    <uc>CSM</uc>
+                    <inicio>17:00</inicio>
+                    <fim>18:30</fim>
+                    <sala>C.1.07</sala>
+                    <professor>André Ribeiro Lourenço</professor>
+                </aula>
+            </dia>
+    	</turma>   
+    </semana>
+</agenda>

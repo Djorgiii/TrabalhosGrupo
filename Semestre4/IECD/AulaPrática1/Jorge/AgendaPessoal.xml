@@ -1,1 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<agenda>
+	<eventos>
+		<evento categoria="trabalho">
+			<titulo>Reunião de equipa</titulo>
+			<inicio>2026-03-05T21:00:00</inicio>
+			<fim>2026-03-05T22:00:00</fim>
+			<local>Escritório</local>
+		</evento>
+	</eventos>
+	<tarefas>
+		<tarefa concluida="false">
+			<descricao>Fazer trabalho de IECD</descricao>
+			<prazo>2026-03-05</prazo>
+			<prioridade>alta</prioridade>
+		</tarefa>
+	</tarefas>
+	<inscricoes>
+		<inscricao turma="42D">
+			<abrUC>IECD</abrUC>
+			<abrUC>AAV</abrUC>
+			<abrUC>CSM</abrUC>
+			<abrUC>RCP</abrUC>
+			<abrUC>IASA</abrUC>
+		</inscricao>
+	</inscricoes>
+</agenda>
