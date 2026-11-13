@@ -1,6 +1,7 @@
-CREATE DATABASE IF NOT EXISTS clinica CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
-USE clinica;
+CREATE DATABASE IF NOT EXISTS nexumvitae CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+USE nexumvitae;
 
 CREATE TABLE Pessoa (
     NIF             CHAR(9)      NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE Pessoa (
     concelho        VARCHAR(50),
     freguesia       VARCHAR(50),
     CONSTRAINT pk_Pessoa PRIMARY KEY (NIF),
+    -- Além do domínio string(9), o NIF e o numSNS têm de ser exatamente 9 dígitos.
     CONSTRAINT ck_Pessoa_NIF CHECK (NIF REGEXP '^[0-9]{9}$'),
     CONSTRAINT ck_Pessoa_genero CHECK (genero IN ('M', 'F', 'Outro')),
     CONSTRAINT ck_Pessoa_dataNascimento CHECK (dataNascimento >= '1900-01-01'),
@@ -21,6 +23,9 @@ CREATE TABLE Pessoa (
      OR (pais <> 'Portugal' AND distrito IS NULL AND concelho IS NULL AND freguesia IS NULL))
 );
 
+-- Atributos multivalor (telefone, email, prefLingCulturais, anteCirurgico):
+-- uma tabela por atributo, com chave (NIF, valor). Não existem sem a pessoa,
+-- por isso a chave estrangeira apaga em cascata.
 CREATE TABLE PessoaTelefone (
     NIF       CHAR(9)     NOT NULL,
     telefone  VARCHAR(20) NOT NULL,
@@ -38,6 +43,9 @@ CREATE TABLE PessoaEmail (
         REFERENCES Pessoa (NIF) ON DELETE CASCADE
 );
 
+-- Generalização (t,s): a chave de Utente e de Profissional é o NIF, que é também
+-- chave estrangeira para Pessoa. Por ser sobreposta, o mesmo NIF pode estar nas duas.
+-- A totalidade (RIA24) não é garantida pelo esquema.
 CREATE TABLE Utente (
     NIF                  CHAR(9)      NOT NULL,
     numSNS               CHAR(9)      NOT NULL,
@@ -102,6 +110,7 @@ CREATE TABLE TipoCuidado (
         'Saúde Mental e Acompanhamento Psicológico'))
 );
 
+-- O código ICD-11 é atribuído pela OMS, por isso não é gerado (sem AUTO_INCREMENT).
 CREATE TABLE Patologia (
     codICD11    VARCHAR(10)  NOT NULL,
     designacao  VARCHAR(150) NOT NULL,
@@ -140,6 +149,8 @@ CREATE TABLE Profissional (
     fotografia           VARCHAR(255),
     numProfissional      INT          NOT NULL,
     estado               VARCHAR(10)  NOT NULL DEFAULT 'Ativo',
+    -- Associações 1:N do lado do Profissional: pertencer é obrigatória (NOT NULL),
+    -- especializar é opcional; a RIA3 (médico tem especialidade) exige trigger.
     codCategoria         INT          NOT NULL,
     codEspecialidade     INT,
     CONSTRAINT pk_Profissional PRIMARY KEY (NIF),
@@ -176,6 +187,8 @@ CREATE TABLE Clinica (
     CONSTRAINT ck_Clinica_longitude CHECK (longitude BETWEEN -180 AND 180)
 );
 
+-- Entidades fracas: a chave inclui a chave da entidade de que dependem e a
+-- chave estrangeira apaga em cascata (Horario, Turno, Medicamento, Requisicao, Anexo).
 CREATE TABLE Horario (
     localidade    VARCHAR(50) NOT NULL,
     diaSemana     VARCHAR(10) NOT NULL,
@@ -201,6 +214,9 @@ CREATE TABLE Vincular (
         REFERENCES Clinica (localidade) ON DELETE RESTRICT
 );
 
+-- Turno depende do vínculo e não do profissional nem da clínica isolados:
+-- a chave estrangeira composta (NIF, localidade) impede turnos sem vínculo.
+-- A RIA7 (turno dentro do horário) e a RIA8 (sem sobreposição) exigem triggers.
 CREATE TABLE Turno (
     NIF         CHAR(9)     NOT NULL,
     localidade  VARCHAR(50) NOT NULL,
@@ -267,12 +283,17 @@ CREATE TABLE AtoMedico (
     CONSTRAINT ck_AtoMedico_RIA13 CHECK (NIFResponsavel <> NIFUtente),
     CONSTRAINT ck_AtoMedico_RIA15 CHECK (estado <> 'realizado'
         OR (NIFResponsavel IS NOT NULL AND dataHoraAtend IS NOT NULL AND dataHoraAtend >= dataHoraAgenda)),
+    -- RIA16 parcial: o CHECK só cobre as colunas do próprio ato; diagnósticos,
+    -- prescrições, requisições, procedimentos e vacinas ficam para trigger.
     CONSTRAINT ck_AtoMedico_RIA16 CHECK (estado = 'realizado'
         OR (dataHoraAtend IS NULL AND anamnese IS NULL AND pressaoArterial IS NULL
             AND freqCardiaca IS NULL AND temperatura IS NULL AND peso IS NULL
             AND altura IS NULL AND notasClinicas IS NULL AND planoTerapeutico IS NULL)),
     CONSTRAINT ck_AtoMedico_RIA17 CHECK (estado = 'realizado'
         OR (avaliacao IS NULL AND comentario IS NULL)),
+    -- Sem ação referencial explícita (comporta-se como RESTRICT): o MySQL não
+    -- aceita ON DELETE/ON UPDATE em colunas usadas num CHECK (NIFUtente e
+    -- NIFResponsavel aparecem nas RIA13 e RIA15).
     CONSTRAINT fk_AtoMedico_Utente FOREIGN KEY (NIFUtente)
         REFERENCES Utente (NIF),
     CONSTRAINT fk_AtoMedico_Clinica FOREIGN KEY (localidade)
@@ -349,6 +370,8 @@ CREATE TABLE Executar (
         REFERENCES Procedimento (codProcedimento) ON DELETE RESTRICT
 );
 
+-- Chave (numAto, codVacina): numa mesma consulta não se administra duas vezes a
+-- mesma vacina. A ordem das doses (RIA21) e o plano prévio (RIA20) exigem triggers.
 CREATE TABLE Administrar (
     numAto     INT         NOT NULL,
     codVacina  INT         NOT NULL,
@@ -406,6 +429,8 @@ CREATE TABLE Reagir (
         REFERENCES Alergenio (codAlergenio) ON DELETE RESTRICT
 );
 
+-- Atributos derivados (RIA23): calculados em vistas para nunca ficarem
+-- desatualizados (a idade muda com a data atual, o IMC com peso e altura).
 CREATE OR REPLACE VIEW vPessoa AS
 SELECT P.*,
        TIMESTAMPDIFF(YEAR, P.dataNascimento, CURDATE()) AS idade
